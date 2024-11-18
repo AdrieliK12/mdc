@@ -1,20 +1,28 @@
 function setup() {
     createCanvas(400, 200);
-  background(175, 238, 238);
+    background(175, 238, 238);
     textStyle(BOLD);
     text("Digite os números que deseja encontrar o MDC", 5, 20);
-     
+  
     inputA = createInput();
     inputA.position(10, 40);
-    
+  
     inputB = createInput();
     inputB.position(10, 70);
-    
+  
     button = createButton('Calcular MDC');
     button.position(10, 100);
     button.mousePressed(calcular);
   
+    // Criar um elemento div para armazenar os resultados
+    resultContainer = createDiv();
+    resultContainer.position(10, 130);
+  }
+  
   function calcular() {
+  
+    resultContainer.html("");
+  
     let num1 = int(inputA.value());
     let num2 = int(inputB.value());
     function calcularMDC(a, b) {
@@ -27,8 +35,5 @@ function setup() {
     }
     let resultado = calcularMDC(num1, num2);
     
-    
-    createP('O MDC é: '+ resultado); 
-    
-  }
+    resultContainer.child(createP('O MDC é: ' + resultado));
   }
